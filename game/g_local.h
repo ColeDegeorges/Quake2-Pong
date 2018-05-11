@@ -587,10 +587,10 @@ typedef struct
 {
 	char	*name;
 	int		ofs;
+
 	fieldtype_t	type;
 	int		flags;
 } field_t;
-
 
 extern	field_t fields[];
 extern	gitem_t	itemlist[];

@@ -566,13 +566,17 @@ void fire_grenade2 (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int 
 fire_rocket
 =================
 */
+int rocket_speed = 100;
+int hitCount = 0;
+edict_t *player;
+
 void rocket_touch (edict_t *ent, edict_t *other, cplane_t *plane, csurface_t *surf)
 {
 	vec3_t		origin;
 	int			n;
-
-	if (other == ent->owner)
-		return;
+	
+	if (ent->owner->client)
+		player = ent->owner;
 
 	if (surf && (surf->flags & SURF_SKY))
 	{
@@ -580,31 +584,37 @@ void rocket_touch (edict_t *ent, edict_t *other, cplane_t *plane, csurface_t *su
 		return;
 	}
 
-	if (ent->owner->client)
-		PlayerNoise(ent->owner, ent->s.origin, PNOISE_IMPACT);
-
 	// calculate position for the explosion entity
 	VectorMA (ent->s.origin, -0.02, ent->velocity, origin);
 
 	if (other->takedamage)
 	{
-		T_Damage (other, ent, ent->owner, ent->velocity, ent->s.origin, plane->normal, ent->dmg, 0, 0, MOD_ROCKET);
+		hitCount = 0;
+		rocket_speed = rocket_speed + 20;
+		other->client->resp.score++;
+		fire_rocket(ent, ent->s.origin, plane->normal, 100, rocket_speed, 120, 120);
 	}
 	else
 	{
-		// don't throw any debris in net games
-		if (!deathmatch->value && !coop->value)
+		if (hitCount < 1) 
 		{
-			if ((surf) && !(surf->flags & (SURF_WARP|SURF_TRANS33|SURF_TRANS66|SURF_FLOWING)))
-			{
-				n = rand() % 5;
-				while(n--)
-					ThrowDebris (ent, "models/objects/debris2/tris.md2", 2, ent->s.origin);
-			}
+			hitCount += 1;
+			//ent->velocity = plane->normal;
+			rocket_speed = rocket_speed + 20;
+			fire_rocket(ent, ent->s.origin, plane->normal, 100, rocket_speed, 120, 120);
+		}
+		else 
+		{
+			hitCount = 0;
+			//kill player
+			T_Damage(player, ent, ent->owner, ent->velocity, ent->s.origin, plane->normal, 1000, 50, 0, MOD_ROCKET);
+			n = rand() % 5;
+			//while (n--)
+				//ThrowDebris(ent, "models/objects/debris2/tris.md2", 2, player->s.origin);
 		}
 	}
 
-	T_RadiusDamage(ent, ent->owner, ent->radius_dmg, other, ent->dmg_radius, MOD_R_SPLASH);
+	//T_RadiusDamage(ent, ent->owner, ent->radius_dmg, other, ent->dmg_radius, MOD_R_SPLASH);
 
 	gi.WriteByte (svc_temp_entity);
 	if (ent->waterlevel)

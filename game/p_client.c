@@ -401,7 +401,8 @@ void ClientObituary (edict_t *self, edict_t *inflictor, edict_t *attacker)
 
 	gi.bprintf (PRINT_MEDIUM,"%s died.\n", self->client->pers.netname);
 	if (deathmatch->value)
-		self->client->resp.score--;
+		return;
+		//self->client->resp.score--;
 }
 
 

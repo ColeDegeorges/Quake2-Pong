@@ -1,5 +1,8 @@
 ﻿cl : Command line warning D9002: ignoring unknown option '/QA21164'
 cl : Command line warning D9002: ignoring unknown option '/QA21164'
+<<<<<<< HEAD
+  g_weapon.c
+=======
   g_ai.c
   g_chase.c
   g_cmds.c
@@ -136,6 +139,7 @@ c:\users\coled_000\projects\quake-2\game\q_shared.c(1234): warning C4996: 'strnc
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(340): note: see declaration of 'strncpy'
 c:\users\coled_000\projects\quake-2\game\q_shared.c(1334): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   Generating Code...
+>>>>>>> 42caf25d45a2bf2f06ecb3e8a0e43d3000a0f697
 C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(1205,5): warning MSB8012: TargetPath(C:\Users\coled_000\Projects\Quake-2\game\.\..\ReleaseAXP\game.dll) does not match the Linker's OutputFile property value (C:\Users\coled_000\Projects\Quake-2\ReleaseAXP\gameaxp.dll). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
 C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(1207,5): warning MSB8012: TargetName(game) does not match the Linker's OutputFile property value (gameaxp). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
      Creating library .\..\ReleaseAXP\gameaxp.lib and object .\..\ReleaseAXP\gameaxp.exp
