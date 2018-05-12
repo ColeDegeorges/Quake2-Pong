@@ -23,6 +23,7 @@ c:\users\coled_000\projects\quake-2\win32\glw_imp.c(357): warning C4996: 'GetVer
   c:\program files (x86)\windows kits\8.1\include\um\sysinfoapi.h(433): note: see declaration of 'GetVersionExA'
 c:\users\coled_000\projects\quake-2\win32\glw_imp.c(594): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(568): note: see declaration of 'stricmp'
+  q_shwin.c
   qgl_win.c
 c:\users\coled_000\projects\quake-2\win32\qgl_win.c(3039): warning C4996: 'putenv': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _putenv. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdlib.h(1349): note: see declaration of 'putenv'
@@ -36,7 +37,6 @@ c:\users\coled_000\projects\quake-2\win32\qgl_win.c(3441): warning C4996: 'fopen
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
 c:\users\coled_000\projects\quake-2\win32\qgl_win.c(3443): warning C4996: 'asctime': This function or variable may be unsafe. Consider using asctime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\time.h(116): note: see declaration of 'asctime'
-  q_shwin.c
   gl_draw.c
   gl_image.c
 c:\users\coled_000\projects\quake-2\ref_gl\gl_image.c(1254): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.

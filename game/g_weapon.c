@@ -592,7 +592,10 @@ void rocket_touch (edict_t *ent, edict_t *other, cplane_t *plane, csurface_t *su
 		hitCount = 0;
 		rocket_speed = rocket_speed + 20;
 		other->client->resp.score++;
-		fire_rocket(ent, ent->s.origin, plane->normal, 100, rocket_speed, 120, 120);
+
+		vec3_t forward;
+		AngleVectors(other->client->v_angle, forward, NULL, NULL);
+		fire_rocket(ent, ent->s.origin, forward, 100, rocket_speed, 120, 120);
 	}
 	else
 	{
@@ -609,8 +612,8 @@ void rocket_touch (edict_t *ent, edict_t *other, cplane_t *plane, csurface_t *su
 			//kill player
 			T_Damage(player, ent, ent->owner, ent->velocity, ent->s.origin, plane->normal, 1000, 50, 0, MOD_ROCKET);
 			n = rand() % 5;
-			//while (n--)
-				//ThrowDebris(ent, "models/objects/debris2/tris.md2", 2, player->s.origin);
+			while (n--)
+				ThrowDebris(ent, "models/objects/debris2/tris.md2", 2, player->s.origin);
 		}
 	}
 
